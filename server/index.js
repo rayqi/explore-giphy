@@ -12,11 +12,16 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+app.get('/ray', (req, res) => {
+    res.send('hello ray')
+})
+app.use('/api', require('./route'))
+
+
 app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
 })
 
-app.use('/api', require('./route'))
 
 
 app.use((err, req, res, next) => {
