@@ -16,6 +16,9 @@ app.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
 })
 
+app.use('/api', require('./route'))
+
+
 app.use((err, req, res, next) => {
     console.error(err)
     console.error(err.stack)
