@@ -38,29 +38,29 @@ class App extends Component {
     console.log('collection', collection, 'content', content)
     return (
       <div className="App">
-        <div className="container">
+        <div className="landing-page container">
           <div className="header">
-            <h1>giphy world</h1>
-            <h3>the best gifs in giphy</h3>
+            <h1 className="main-title">giphy world</h1>
+            <h3 className="subtitle">the best gifs in giphy</h3>
           </div>
-        </div>
-        <div className="body container">
-          <div class="row">
-            <form class="col s12" onSubmit={this.handleSubmit}>
-              <div class="row">
-                <div class="input-field col s12">
-                  <textarea id="textarea1" class="materialize-textarea" onChange={this.handleChange}></textarea>
-                  <label for="textarea1">search giphy</label>
-                  <button class="btn waves-effect waves-light" type="submit" name="action">EXPLORE
+          <div className="body container ">
+            <div class="row">
+              <form class="search-bar col s12" onSubmit={this.handleSubmit}>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="textarea1" class="materialize-textarea" onChange={this.handleChange}></textarea>
+                    <label for="textarea1">search giphy</label>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">EXPLORE
                     <i class="material-icons right">send</i>
-                  </button>
-                </div>
+                    </button>
+                  </div>
 
-              </div>
-            </form>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-        <div className="results">
+        <div className="results container">
           {collection.length > 0 ? collection.map((gif, index) => {
             let giphy = gif.images.original.url
 
@@ -70,7 +70,6 @@ class App extends Component {
           })
 
             : collection.map((gif, index) => {
-              console.log('gif', gif)
 
               let giphy = gif.images.original.url
 

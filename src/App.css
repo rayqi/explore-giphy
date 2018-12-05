@@ -7,6 +7,10 @@
   height: 40vmin;
 }
 
+.header{
+  color: white;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -17,6 +21,38 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.landing-page {
+  background-image:linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ), url("https://files.lifehacks.io/wp-content/uploads/Fun-Things-to-Do-by-Yourself-9-e1533728879209-600x400.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.flex-center{
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
 
 .App-link {
   color: #61dafb;
