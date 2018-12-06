@@ -14,7 +14,8 @@ class App extends Component {
       name: "",
       collection: [],
       ratings: [],
-      searched: false
+      searched: false,
+      sorted: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -32,6 +33,12 @@ class App extends Component {
     event.target.reset()
   }
 
+  handleClick = () => {
+    console.log('before click', this.state)
+    this.setState({ sorted: !this.state.sorted })
+    console.log('after click', this.state)
+  }
+
   getData = (content) => {
     return axios.get('/api/' + content)
       .then(res => res.data)
@@ -41,8 +48,8 @@ class App extends Component {
   updateRatings = (event) => {
     if (!this.state.ratings.includes(event.target.value)) {
       this.setState({ ratings: [...this.state.ratings, event.target.value] })
-    }
-    if (this.state.ratings.includes(event.target.value)) {
+    } else {
+      // if (this.state.ratings.includes(event.target.value)) {
       this.setState({
         ratings: this.state.ratings.filter((elem) => elem !== event.target.value)
       })
@@ -50,13 +57,12 @@ class App extends Component {
   }
 
 
-
   componentDidMount() {
     M.AutoInit();
   }
 
   render() {
-    console.log(this.state)
+    console.log('state', this.state)
 
     return (
       <div className="App">
@@ -67,15 +73,6 @@ class App extends Component {
           </div>
           <div className="body container ">
             <div class="row ">
-              {/* <div className="filter-buttons flex-center flex-row">
-                <a class="waves-effect waves-light btn-small">Y</a>
-                <a class="waves-effect waves-light btn-small">G</a>
-                <a class="waves-effect waves-light btn-small">PG</a>
-                <a class="waves-effect waves-light btn-small">PG-13</a>
-                <a class="waves-effect waves-light btn-small">R</a>
-              </div> */}
-
-
               <form class="search-bar col s12" onSubmit={this.handleSubmit}>
                 <div class="row">
                   <div class="input-field col s12">
@@ -93,12 +90,9 @@ class App extends Component {
         </div>
         <div className="results container ">
           <div className="custom-row">
-            <div className="input-field col s2">
-              <select defaultValue="">
-                <option value="" disabled >SORT ME</option>
-                <option value="abc">A - Z</option>
-                <option value="recent">Most Recent</option>
-              </select>
+            <div className="sort-button col s2">
+              <a class="waves-effect waves-light btn-small" onClick={this.handleClick}>Button</a>
+
             </div>
             <div className="filters-checklist">
               <form className="filter-list flex-row" action="#">
@@ -141,7 +135,7 @@ class App extends Component {
 
         </div>
 
-        <Results collection={this.state.collection} ratings={this.state.ratings} searched={this.state.searched} />
+        <Results collection={this.state.collection} ratings={this.state.ratings} searched={this.state.searched} sorted={this.state.sorted} />
       </div >
     );
   }
