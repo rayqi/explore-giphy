@@ -7,6 +7,7 @@ import Results from './Results'
 
 
 
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -45,6 +46,12 @@ class App extends Component {
       .then(results => this.setState({ collection: results.data, searched: true }))
   }
 
+  getTrending = () => {
+    return axios.get('/api/trending')
+      .then(res => res.data)
+      .then(results => this.setState({ collection: results.data }))
+  }
+
   updateRatings = (event) => {
     if (!this.state.ratings.includes(event.target.value)) {
       this.setState({ ratings: [...this.state.ratings, event.target.value] })
@@ -58,6 +65,7 @@ class App extends Component {
 
 
   componentDidMount() {
+    this.getTrending()
     M.AutoInit();
   }
 
@@ -88,7 +96,7 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <div className="results container ">
+        {this.state.searched === false ? <div></div> : <div className="results container ">
           <div className="custom-row">
             <div className="sort-button col s2">
               <a class="waves-effect waves-light btn-small" onClick={this.handleClick}>Button</a>
@@ -134,7 +142,7 @@ class App extends Component {
           </div>
 
         </div>
-
+        }
         <Results collection={this.state.collection} ratings={this.state.ratings} searched={this.state.searched} sorted={this.state.sorted} />
       </div >
     );
