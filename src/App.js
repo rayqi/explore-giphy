@@ -98,7 +98,7 @@ class App extends Component {
         {this.state.searched === false ? <div></div> : <div className="results container ">
           <div className="custom-row">
             <div className="sort-button col s2">
-              <a class="waves-effect waves-light btn-small" onClick={this.handleClick}>Button</a>
+              <a class="waves-effect waves-light btn-small" onClick={this.handleClick}>Most Recent</a>
 
             </div>
             <div className="filters-checklist">

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Default from './Default'
 import Gallery from 'react-photo-gallery'
-import { callbackify } from 'util';
 
 class Results extends Component {
     constructor(props) {
@@ -45,8 +44,9 @@ class Results extends Component {
                 height: 2
             }
         })
-        return (
 
+
+        return (
             // <div className="results container flex-row flex-center">
             //     {sortedList.length === 0 && this.props.searched === true ? <Default /> : sortedList.map((gif, index) => {
             //         let giphy = gif.images.fixed_height.url
@@ -56,7 +56,7 @@ class Results extends Component {
 
             // </div>
             <article className="container ">
-                <Gallery photos={newCollection} />
+                {newCollection.length > 0 ? <Gallery photos={newCollection} /> : <Default />}
             </article>
         )
     }
