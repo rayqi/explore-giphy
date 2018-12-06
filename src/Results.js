@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Default from './Default'
+import Gallery from 'react-photo-gallery'
+import { callbackify } from 'util';
+
 class Results extends Component {
     constructor(props) {
         super(props)
@@ -34,17 +37,27 @@ class Results extends Component {
                 return 0
             })
         }
-        console.log('sorted collection', sortedList.map(elem => elem.import_datetime))
 
+        let newCollection = sortedList.map((gif) => {
+            return {
+                src: gif.images.fixed_height.url,
+                width: 3,
+                height: 2
+            }
+        })
         return (
-            <div className="results container flex-row flex-center">
-                {sortedList.length === 0 && this.props.searched === true ? <Default /> : sortedList.map((gif, index) => {
-                    let giphy = gif.images.fixed_height.url
 
-                    return <div className="giphy-item" key={index} ><img className='giphy-image responsive-img' cross-origin="anonymous" title={index} src={giphy} alt="gif" ></img></div>
-                })}
+            // <div className="results container flex-row flex-center">
+            //     {sortedList.length === 0 && this.props.searched === true ? <Default /> : sortedList.map((gif, index) => {
+            //         let giphy = gif.images.fixed_height.url
 
-            </div>
+            //         return <div className="giphy-item" key={index} ><img className='giphy-image responsive-img' cross-origin="anonymous" title={index} src={giphy} alt="gif" ></img></div>
+            //     })}
+
+            // </div>
+            <article className="container ">
+                <Gallery photos={newCollection} />
+            </article>
         )
     }
 }

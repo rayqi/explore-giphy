@@ -69,8 +69,11 @@
     background-position: 50% 50%;
     background-repeat:   no-repeat;
     background-size:     cover;
-    padding: 7px
+    padding: 7px;
+    justify-content: space-around;
+
 }
+
 
 input, select, textarea{
   color: white;

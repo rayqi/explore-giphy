@@ -7,7 +7,6 @@ import Results from './Results'
 
 
 
-
 class App extends Component {
   constructor(props) {
     super(props)
