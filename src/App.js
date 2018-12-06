@@ -76,8 +76,8 @@ class App extends Component {
       <div className="App">
         <div className="landing-page container">
           <div className="header">
-            <h1 className="main-title">giphy world</h1>
-            <h3 className="subtitle">the best gifs in giphy</h3>
+            <h1 className="main-title">GIPHY WORLD</h1>
+            <h4 className="subtitle">the best gifs in giphy</h4>
           </div>
           <div className="body container ">
             <div class="row ">

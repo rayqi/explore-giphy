@@ -11,6 +11,16 @@
   color: white;
 }
 
+.main-title{
+  font-weight: 700;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.subtitle{
+  font-weight: 100
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -75,6 +85,18 @@ input, select, textarea{
   margin: 15px
 }
 
+.default-result{
+  margin: 15px
+}
+
+.default-line{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#no-result-image{
+  margin: 50px 50px 10px 10px
+}
 
 
 .App-link {
