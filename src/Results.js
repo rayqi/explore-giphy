@@ -5,7 +5,6 @@ import Gallery from 'react-photo-gallery'
 class Results extends Component {
     constructor(props) {
         super(props)
-
     }
 
 
