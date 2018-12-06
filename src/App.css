@@ -50,6 +50,19 @@
   justify-content: center;
 }
 
+.giphy-item{
+    position: relative;
+    float: left;
+    width:  33%;
+    height: 33%;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+    padding: 7px
+}
+
+
+
 
 
 

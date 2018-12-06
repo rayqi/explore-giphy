@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import 'materialize-css/dist/css/materialize.min.css'
+import M from 'materialize-css/dist/js/materialize.min.js'
+import Results from './Results'
+
+
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: "",
-      collection: []
+      collection: [],
+
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -32,10 +38,16 @@ class App extends Component {
       .then(results => this.setState({ collection: results.data }))
   }
 
+
+
+
+
+  componentDidMount() {
+    M.AutoInit();
+  }
+
   render() {
-    let collection = this.state.collection
-    let content = this.state.name
-    console.log('collection', collection, 'content', content)
+
     return (
       <div className="App">
         <div className="landing-page container">
@@ -44,7 +56,14 @@ class App extends Component {
             <h3 className="subtitle">the best gifs in giphy</h3>
           </div>
           <div className="body container ">
-            <div class="row">
+            <div class="row ">
+              <div className="filter-buttons flex-center flex-row">
+                <a class="waves-effect waves-light btn-small">Y</a>
+                <a class="waves-effect waves-light btn-small">G</a>
+                <a class="waves-effect waves-light btn-small">PG</a>
+                <a class="waves-effect waves-light btn-small">PG-13</a>
+                <a class="waves-effect waves-light btn-small">R</a>
+              </div>
               <form class="search-bar col s12" onSubmit={this.handleSubmit}>
                 <div class="row">
                   <div class="input-field col s12">
@@ -60,29 +79,21 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <div className="results container">
-          {collection.length > 0 ? collection.map((gif, index) => {
-            let giphy = gif.images.original.url
+        <div className="results container ">
+          <div className="row">
+            <div className="input-field col s2">
+              <select defaultValue="">
+                <option value="" disabled >SORT ME</option>
+                <option value="abc">A - Z</option>
+                <option value="recent">Most Recent</option>
+              </select>
+            </div>
+          </div>
 
-
-            return <div className="giphy-item" key={index} ><img className='giphy-image' cross-origin="anonymous" title={index} src={giphy} alt="gif" ></img></div>
-
-          })
-
-            : collection.map((gif, index) => {
-
-              let giphy = gif.images.original.url
-
-
-
-              return <div className="giphy-item" key={index} ><img className='giphy-image' cross-origin="anonymous" title={index} src={giphy} alt="gif" ></img></div>
-            })
-
-          }
         </div>
 
-
-      </div>
+        <Results collection={this.state.collection} />
+      </div >
     );
   }
 }
