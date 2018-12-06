@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Default from './Default'
 class Results extends Component {
     constructor(props) {
         super(props)
@@ -38,7 +38,7 @@ class Results extends Component {
 
         return (
             <div className="results container flex-row flex-center">
-                {sortedList.length === 0 && this.props.searched === true ? <div><img className='giphy-image responsive-img' cross-origin="anonymous" alt="gif" src="https://media.giphy.com/media/4eoO0NSdNY11K/giphy.gif"></img>SORRY, WE ARE OUT OF IMAGES. IN THE MEANTIME, LETS LISTEN TO PHOEBE UNTIL WE SEARCH AGAIN.</div> : sortedList.map((gif, index) => {
+                {sortedList.length === 0 && this.props.searched === true ? <Default /> : sortedList.map((gif, index) => {
                     let giphy = gif.images.fixed_height.url
 
                     return <div className="giphy-item" key={index} ><img className='giphy-image responsive-img' cross-origin="anonymous" title={index} src={giphy} alt="gif" ></img></div>

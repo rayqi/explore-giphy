@@ -62,6 +62,10 @@
     padding: 7px
 }
 
+input, select, textarea{
+  color: white;
+}
+
 .custom-row {
   display: flex;
   justify-content: space-between;
