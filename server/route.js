@@ -12,4 +12,24 @@ router.get('/:content', (req, res, next) => {
         .then(results => res.send(results))
 })
 
+router.get('/trending', (req, res, next) => {
+    console.log('hitting here')
+    axios.get(`http://api.giphy.com/v1/gifs/trending&api_key=${API_KEY}`)
+        .then(res => res.data)
+        .then(results => res.send(results))
+})
+
+
+
+// router.get('/:content', (req, res, next) => {
+//     console.log('hitting here')
+//     let rating = 'r'
+//     axios.get(`http://api.giphy.com/v1/gifs/search?q=${req.params.content}&rating=${rating}&api_key=${API_KEY}`)
+//         .then(res => res.data)
+//         .then(results => res.send(results))
+// })
+
+
+
+
 module.exports = router;

@@ -12,9 +12,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/ray', (req, res) => {
-    res.send('hello ray')
-})
+
 app.use('/api', require('./route'))
 
 

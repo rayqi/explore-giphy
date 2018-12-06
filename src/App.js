@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       name: "",
       collection: [],
-
+      ratings: [],
+      searched: false
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -32,13 +33,21 @@ class App extends Component {
   }
 
   getData = (content) => {
-
     return axios.get('/api/' + content)
       .then(res => res.data)
-      .then(results => this.setState({ collection: results.data }))
+      .then(results => this.setState({ collection: results.data, searched: true }))
   }
 
-
+  updateRatings = (event) => {
+    if (!this.state.ratings.includes(event.target.value)) {
+      this.setState({ ratings: [...this.state.ratings, event.target.value] })
+    }
+    if (this.state.ratings.includes(event.target.value)) {
+      this.setState({
+        ratings: this.state.ratings.filter((elem) => elem !== event.target.value)
+      })
+    }
+  }
 
 
 
@@ -47,6 +56,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state)
 
     return (
       <div className="App">
@@ -57,13 +67,15 @@ class App extends Component {
           </div>
           <div className="body container ">
             <div class="row ">
-              <div className="filter-buttons flex-center flex-row">
+              {/* <div className="filter-buttons flex-center flex-row">
                 <a class="waves-effect waves-light btn-small">Y</a>
                 <a class="waves-effect waves-light btn-small">G</a>
                 <a class="waves-effect waves-light btn-small">PG</a>
                 <a class="waves-effect waves-light btn-small">PG-13</a>
                 <a class="waves-effect waves-light btn-small">R</a>
-              </div>
+              </div> */}
+
+
               <form class="search-bar col s12" onSubmit={this.handleSubmit}>
                 <div class="row">
                   <div class="input-field col s12">
@@ -80,7 +92,7 @@ class App extends Component {
           </div>
         </div>
         <div className="results container ">
-          <div className="row">
+          <div className="custom-row">
             <div className="input-field col s2">
               <select defaultValue="">
                 <option value="" disabled >SORT ME</option>
@@ -88,11 +100,48 @@ class App extends Component {
                 <option value="recent">Most Recent</option>
               </select>
             </div>
+            <div className="filters">
+              <form className="filter flex-row" action="#">
+                <p>
+                  <label>
+                    <input type="checkbox" name="rating" value="PG-13" onChange={this.updateRatings} />
+                    <span>PG-13</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" name="rating" value="PG" onChange={this.updateRatings} />
+                    <span>PG</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" name="rating" value="Y" onChange={this.updateRatings} />
+                    <span>Y</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" name="rating" value="G" onChange={this.updateRatings} />
+                    <span>G</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" name="rating" value="R" onChange={this.updateRatings} />
+                    <span>R</span>
+                  </label>
+                </p>
+
+
+              </form>
+            </div>
+
           </div>
 
         </div>
 
-        <Results collection={this.state.collection} />
+        <Results collection={this.state.collection} ratings={this.state.ratings} searched={this.state.searched} />
       </div >
     );
   }
