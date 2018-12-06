@@ -100,34 +100,34 @@ class App extends Component {
                 <option value="recent">Most Recent</option>
               </select>
             </div>
-            <div className="filters">
-              <form className="filter flex-row" action="#">
+            <div className="filters-checklist">
+              <form className="filter-list flex-row" action="#">
                 <p>
-                  <label>
+                  <label className="filter-label">
                     <input type="checkbox" name="rating" value="PG-13" onChange={this.updateRatings} />
                     <span>PG-13</span>
                   </label>
                 </p>
                 <p>
-                  <label>
+                  <label className="filter-label">
                     <input type="checkbox" name="rating" value="PG" onChange={this.updateRatings} />
                     <span>PG</span>
                   </label>
                 </p>
                 <p>
-                  <label>
+                  <label className="filter-label">
                     <input type="checkbox" name="rating" value="Y" onChange={this.updateRatings} />
                     <span>Y</span>
                   </label>
                 </p>
                 <p>
-                  <label>
+                  <label className="filter-label">
                     <input type="checkbox" name="rating" value="G" onChange={this.updateRatings} />
                     <span>G</span>
                   </label>
                 </p>
                 <p>
-                  <label>
+                  <label className="filter-label">
                     <input type="checkbox" name="rating" value="R" onChange={this.updateRatings} />
                     <span>R</span>
                   </label>
