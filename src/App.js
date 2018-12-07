@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import 'materialize-css/dist/css/materialize.min.css'
-import M from 'materialize-css/dist/js/materialize.min.js'
 import Results from './Results'
 
 
@@ -23,7 +21,6 @@ class App extends Component {
   }
 
   handleChange = (event) => {
-    console.log('typing', event.target.value)
     this.setState({ name: event.target.value })
   }
 
@@ -34,9 +31,7 @@ class App extends Component {
   }
 
   handleClick = () => {
-    console.log('before click', this.state)
     this.setState({ sorted: !this.state.sorted })
-    console.log('after click', this.state)
   }
 
   getData = (content) => {
@@ -55,7 +50,6 @@ class App extends Component {
     if (!this.state.ratings.includes(event.target.value)) {
       this.setState({ ratings: [...this.state.ratings, event.target.value] })
     } else {
-      // if (this.state.ratings.includes(event.target.value)) {
       this.setState({
         ratings: this.state.ratings.filter((elem) => elem !== event.target.value)
       })
@@ -65,11 +59,9 @@ class App extends Component {
 
   componentDidMount() {
     this.getTrending()
-    M.AutoInit();
   }
 
   render() {
-    console.log('state', this.state)
 
     return (
       <div className="App">
