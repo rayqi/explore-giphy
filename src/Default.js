@@ -1,5 +1,6 @@
 import React from 'react'
 
+//When there are no images from search filters, mount default gif
 export default () => {
     return (<div className="default-result container flex-center flex-column">
         <img id="no-result-image" className='giphy-image responsive-img' cross-origin="anonymous" alt="gif" src="https://media.giphy.com/media/4eoO0NSdNY11K/giphy.gif"></img>

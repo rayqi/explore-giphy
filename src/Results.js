@@ -7,16 +7,20 @@ class Results extends Component {
         super(props)
     }
 
-
-
     render() {
         let collection = this.props.collection
         let ratings = this.props.ratings
         let sorted = this.props.sorted
 
+
+        //Set filtered array to be collection of images if ratings are selected with filters accordingly. 
+        //If there are no filters, then the filtered array will be the original collection of images.
         let filtered = [];
         collection.length > 0 && ratings.length > 0 ? filtered = collection.filter(gif => ratings.includes(gif.rating.toUpperCase())) : filtered = collection;
 
+
+        //sortedList is defaulted as the filtered array based on previous logic. If sorted is toggled on App component,
+        //then sort based on import_datetime. 
         let sortedList;
         if (sorted === false) {
             sortedList = filtered
@@ -32,6 +36,8 @@ class Results extends Component {
             })
         }
 
+
+        //Add the list to React Photo Gallery Component to make all images the same size and same borders all around. 
         let gifGallery = sortedList.map((gif) => {
             return {
                 src: gif.images.fixed_height.url,
@@ -39,7 +45,6 @@ class Results extends Component {
                 height: 2
             }
         })
-
 
         return (
             <article className="container ">

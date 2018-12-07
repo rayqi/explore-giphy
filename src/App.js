@@ -3,8 +3,6 @@ import './App.css';
 import axios from 'axios';
 import Results from './Results'
 
-
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -17,7 +15,6 @@ class App extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.getData = this.getData.bind(this)
   }
 
   handleChange = (event) => {
@@ -46,6 +43,9 @@ class App extends Component {
       .then(results => this.setState({ collection: results.data }))
   }
 
+
+  //On each filter handler, we are adding the specific value (rating) to the array.
+  //The array can hold several ratings and will filter the content accordingly.
   updateRatings = (event) => {
     if (!this.state.ratings.includes(event.target.value)) {
       this.setState({ ratings: [...this.state.ratings, event.target.value] })
@@ -57,12 +57,13 @@ class App extends Component {
   }
 
 
+  //Once the landing page mounts, we will make a call to trending gifs under the search.
   componentDidMount() {
     this.getTrending()
   }
 
+  //Passed down results to Results Component
   render() {
-
     return (
       <div className="App">
         <div className="landing-page container">
@@ -125,13 +126,9 @@ class App extends Component {
                     <span>R</span>
                   </label>
                 </p>
-
-
               </form>
             </div>
-
           </div>
-
         </div>
         }
         <Results collection={this.state.collection} ratings={this.state.ratings} searched={this.state.searched} sorted={this.state.sorted} />

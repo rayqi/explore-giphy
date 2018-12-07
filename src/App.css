@@ -7,6 +7,9 @@
   height: 40vmin;
 }
 
+
+/* #region --------- Header --------- */
+
 .header{
   color: white;
 }
@@ -40,10 +43,14 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
 }
 
-.flex-row{
+/* #endregion --------- Header --------- */
+
+
+/* #region --------- Global --------- */
+
+.flex-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap
@@ -55,12 +62,21 @@
   flex-wrap: wrap;
 }
 
-.flex-center{
+.flex-center {
   align-items: center;
   justify-content: center;
 }
 
-.giphy-item{
+input, select, textarea {
+  color: white; 
+}
+
+/* #endregion ------ Global --------- */
+
+
+/* #region --------- Results --------- */
+
+.giphy-item {
     position: relative;
     float: left;
     max-width: 18.75rem;
@@ -71,12 +87,6 @@
     background-size:     cover;
     padding: 7px;
     justify-content: space-around;
-
-}
-
-
-input, select, textarea{
-  color: white;
 }
 
 .custom-row {
@@ -84,23 +94,24 @@ input, select, textarea{
   justify-content: space-between;
 }
 
-.filter-label{
+.filter-label {
   margin: 15px
 }
 
-.default-result{
+.default-result {
   margin: 0 auto
 }
 
-.default-line{
+.default-line {
   font-size: 15px;
   font-weight: bold;
 }
 
-#no-result-image{
+#no-result-image {
   margin: 50px 50px 10px 10px
 }
 
+/* #endregion --------- Results --------- */
 
 .App-link {
   color: #61dafb;

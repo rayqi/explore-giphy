@@ -10,7 +10,6 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-
 // the __dirname is the current directory from where the script is running
 app.use(express.static(__dirname));
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
