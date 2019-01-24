@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const axios = require('axios')
-require('../secrets')
+// require('../secrets')
 
 const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
 
