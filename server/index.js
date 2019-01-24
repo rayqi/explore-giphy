@@ -27,7 +27,7 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(port, () => {
-    console.log('server is running nicely at 5000')
+    console.log(`server is running nicely at ${port}`)
 })
 
 module.exports = app;
