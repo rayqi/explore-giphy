@@ -99,7 +99,7 @@ input, select, textarea {
 }
 
 .default-result {
-  margin: 0 auto
+  /* margin: 0 auto */
 }
 
 .default-line {
@@ -109,6 +109,10 @@ input, select, textarea {
 
 #no-result-image {
   margin: 50px 50px 10px 10px
+}
+
+span{
+  padding-right: 10px;
 }
 
 /* #endregion --------- Results --------- */

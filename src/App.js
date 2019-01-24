@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Results from './Results'
 
+let API_KEY = "tXuAFO9PLLeRDzCzFORGmlDajArwFF5a"
 class App extends Component {
   constructor(props) {
     super(props)
@@ -32,7 +33,7 @@ class App extends Component {
   }
 
   getData = (content) => {
-    return axios.get('/api/' + content)
+    return axios.get(`/api/${content}`)
       .then(res => res.data)
       .then(results => this.setState({ collection: results.data, searched: true }))
   }
@@ -47,6 +48,7 @@ class App extends Component {
   //On each filter handler, we are adding the specific value (rating) to the array.
   //The array can hold several ratings and will filter the content accordingly.
   updateRatings = (event) => {
+    console.log('event.target.value', event.target.value, this.state.ratings)
     if (!this.state.ratings.includes(event.target.value)) {
       this.setState({ ratings: [...this.state.ratings, event.target.value] })
     } else {
@@ -64,11 +66,12 @@ class App extends Component {
 
   //Passed down results to Results Component
   render() {
+    console.log('state', this.state)
     return (
       <div className="App">
         <div className="landing-page container">
           <div className="header">
-            <h1 className="main-title">GIPHY WORLD</h1>
+            <h1 className="main-title">GAY WORLD</h1>
             <h4 className="subtitle">the best gifs in giphy</h4>
           </div>
           <div className="body container ">
