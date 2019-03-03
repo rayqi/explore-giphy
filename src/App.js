@@ -15,6 +15,7 @@ class App extends Component {
     }
   }
 
+
   getData = (content) => {
     return axios.get(`/api/${content}`)
       .then(res => res.data)
@@ -22,7 +23,7 @@ class App extends Component {
   }
 
   getTrending = () => {
-    return axios.get('/api/trending')
+    return axios.get(`/api/trending`)
       .then(res => res.data)
       .then(results => this.setState({ collection: results.data }))
   }
