@@ -23,10 +23,9 @@ class App extends Component {
   }
 
   getTrending = () => {
-    return fetch('https://dog.ceo/api/breeds/list/all')
-      .then(res => res.json())
-      .then(results => console.log('resz', results.message))
-    // .then(results => this.setState({ collection: results.data }))
+    return axios.get(`/api/trending`)
+      .then(res => res.data)
+      .then(results => this.setState({ collection: results.data }))
   }
 
   getSearching = () => {
